@@ -93,7 +93,7 @@ app.post('/', (req, res) => {
     lastname: req.body.lastname,
     email: req.body.email,
     cookieID: req.cookies.hubspotutk
-  });
+  }); 
 });
 
 
