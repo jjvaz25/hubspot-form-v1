@@ -6,6 +6,8 @@ const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
 const app = express();
 
+const PORT = 3000;
+
 app.set('view engine', 'pug');
 
 app.use(bodyParser.json());
@@ -89,7 +91,7 @@ app.post('/', (req, res) => {
     lastname: req.body.lastname,
     email: req.body.email
   });
-})
+});
 
 
-app.listen(process.env.PORT || 3000, () => console.log('listening on port 3000'));
+app.listen(process.env.PORT || 3000, () => console.log(`listening on port ${PORT}`));
