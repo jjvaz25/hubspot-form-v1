@@ -92,49 +92,4 @@ app.post('/', (req, res) => {
 })
 
 
-
-
-// app.post('/', async (req, res) => {
-//   const apiCall = 'https://api.hsforms.com/submissions/v3/integration/submit/7388454/6153d0b7-b2fa-4297-86fa-8aab202b232f'
-//   let data = {
-//     "fields": [
-//       {
-//         "name": "email",
-//         "value": req.body.email
-//       },
-//       {
-//         "name": "firstname",
-//         "value": req.body.firstname
-//       },
-//       {
-//         "name": "lastname",
-//         "value": req.body.lastname
-//       },
-//     ],
-//     "legalConsentOptions":{ // Include this object when GDPR options are enabled
-//       "consent":{
-//         "consentToProcess":true,
-//         "text":"I agree to allow Example Company to store and process my personal data.",
-//         "communications":[
-//           {
-//             "value":true,
-//             "subscriptionTypeId":999,
-//             "text":"I agree to receive marketing communications from Example Company."
-//           }
-//         ]
-//       }
-//     }
-//   };
-
-//   const response = await axios.post(apiCall);
-//   const newData = response.data;
-//   console.log(response.newData);
-
-//   res.render('thankyou', {
-//     firstname: req.body.firstname,
-//     lastname: req.body.lastname,
-//     email: req.body.email
-//   });
-// })
-
 app.listen(3000, () => console.log('listening on port 3000'));
