@@ -21,23 +21,19 @@ const formv3 = (email, firstname, lastname) => {
   var xhr = new XMLHttpRequest();
   var url = 'https://api.hsforms.com/submissions/v3/integration/submit/7388454/6153d0b7-b2fa-4297-86fa-8aab202b232f'
   
-  // Example request JSON:
+  // Request JSON:
   var data = {
-    // "submittedAt": "1517927174000",
     "fields": [
       {
         "name": "email",
-        // "value": "jac@gmail.com"
         "value": email
       },
       {
         "name": "firstname",
-        // "value": "Jac"
         "value": firstname
       },
       {
         "name": "lastname",
-        // "value": "Vaz"
         "value": lastname
       }
     ],
@@ -88,7 +84,11 @@ const formv3 = (email, firstname, lastname) => {
 
 app.post('/', (req, res) => {
   formv3(req.body.email, req.body.firstname, req.body.lastname);
-  res.send('thanks for submitting');
+  res.render('thankyou', {
+    firstname: req.body.firstname,
+    lastname: req.body.lastname,
+    email: req.body.email
+  });
 })
 
 
