@@ -1,6 +1,7 @@
 const express = require('express');
 const axios = require('axios');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
 
@@ -12,13 +13,14 @@ app.set('view engine', 'pug');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 
 app.get('/', (req, res) => {
   res.render('landing');
 });
 
-const formv3 = (email, firstname, lastname) => {
+const formv3 = (email, firstname, lastname, cookie) => {
   // Create the new request 
   var xhr = new XMLHttpRequest();
   var url = 'https://api.hsforms.com/submissions/v3/integration/submit/7388454/6153d0b7-b2fa-4297-86fa-8aab202b232f'
@@ -39,20 +41,20 @@ const formv3 = (email, firstname, lastname) => {
         "value": lastname
       }
     ],
-    // "context": {
-    //   "hutk": ':hutk', // include this parameter and set it to the hubspotutk cookie value to enable cookie tracking on your submission
-    //   "pageUri": "www.example.com/page",
-    //   "pageName": "Example page"
-    // },
+    "context": {
+      "hutk": cookie, // include this parameter and set it to the hubspotutk cookie value to enable cookie tracking on your submission
+      "pageUri": "spartan-mule-landing.herokuapp.com/",
+      "pageName": "Spartan Mule Landing Page"
+    },
     "legalConsentOptions":{ // Include this object when GDPR options are enabled
       "consent":{
         "consentToProcess":true,
-        "text":"I agree to allow Example Company to store and process my personal data.",
+        "text":"I agree to allow Spartan Mule to store and process my personal data.",
         "communications":[
           {
             "value":true,
             "subscriptionTypeId":999,
-            "text":"I agree to receive marketing communications from Example Company."
+            "text":"I agree to receive marketing communications from Spartan Mule."
           }
         ]
       }
@@ -85,11 +87,12 @@ const formv3 = (email, firstname, lastname) => {
 }
 
 app.post('/', (req, res) => {
-  formv3(req.body.email, req.body.firstname, req.body.lastname);
+  formv3(req.body.email, req.body.firstname, req.body.lastname, req.cookies.hubspotutk);
   res.render('thankyou', {
     firstname: req.body.firstname,
     lastname: req.body.lastname,
-    email: req.body.email
+    email: req.body.email,
+    cookieID: req.cookies.hubspotutk
   });
 });
 
