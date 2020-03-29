@@ -21,29 +21,30 @@ app.get('/', (req, res) => {
   res.render('landing');
 });
 
-const formv3 = (email, firstname, lastname, hutk) => {
+app.post('/', (req, res) => {
+
   // Create the new request 
   var xhr = new XMLHttpRequest();
   var url = 'https://api.hsforms.com/submissions/v3/integration/submit/7388454/6153d0b7-b2fa-4297-86fa-8aab202b232f'
-  
+
   // Request JSON:
   var data = {
     "fields": [
       {
         "name": "email",
-        "value": email
+        "value": req.body.email
       },
       {
         "name": "firstname",
-        "value": firstname
+        "value": req.body.firstname
       },
       {
         "name": "lastname",
-        "value": lastname
+        "value": req.body.lastname
       }
     ],
     "context": {
-      "hutk": hutk,
+      "hutk": req.cookies.hubspotutk,
       "pageUri": "spartan-mule-landing.herokuapp.com/",
       "pageName": "Spartan Mule Landing Page"
     },
@@ -69,14 +70,36 @@ const formv3 = (email, firstname, lastname, hutk) => {
   xhr.setRequestHeader('Content-Type', 'application/json');
 
   xhr.onreadystatechange = function() {
-    if(xhr.readyState == 4 && xhr.status == 200) { 
+    if(xhr.readyState == 4 && xhr.status == 200) {
+        console.log('200 all good!') 
         console.log(xhr.responseText); // Returns a 200 response if the submission is successful.
-    } else if (xhr.readyState == 4 && xhr.status == 400){ 
-        console.log(xhr.responseText); // Returns a 400 error the submission is rejected.          
+        res.render('thankyou', {
+          firstname: req.body.firstname,
+          lastname: req.body.lastname,
+          email: req.body.email,
+          hutkCode: req.cookies.hubspotutk
+        })
+    } else if (xhr.readyState == 4 && xhr.status == 400){
+        console.log('400 error message') 
+        console.log(xhr.responseText); // Returns a 400 error the submission is rejected.
+        res.render('error', {
+          error: 400,
+          explanation: 'Invalid email submission. Please make sure you are entering a valid email address'
+        })
     } else if (xhr.readyState == 4 && xhr.status == 403){ 
-        console.log(xhr.responseText); // Returns a 403 error if the portal isn't allowed to post submissions.           
+        console.log('403 error message')
+        console.log(xhr.responseText); // Returns a 403 error if the portal isn't allowed to post submissions.
+        res.render('error', {
+          error: 403,
+          explanation: 'Access forbidden'
+        })      
     } else if (xhr.readyState == 4 && xhr.status == 404){ 
-        console.log(xhr.responseText); //Returns a 404 error if the formGuid isn't found     
+        console.log('404 error message')
+        console.log(xhr.responseText); //Returns a 404 error if the formGuid isn't found
+        res.render('error', {
+          error: 404,
+          explanation: 'Page not found'
+        })
     }
    }
 
@@ -85,17 +108,11 @@ const formv3 = (email, firstname, lastname, hutk) => {
   
   xhr.send(final_data)
   console.log(final_data);
-}
 
-app.post('/', (req, res) => {
-  formv3(req.body.email, req.body.firstname, req.body.lastname, req.cookies.hubspotutk);
-  res.render('thankyou', {
-    firstname: req.body.firstname,
-    lastname: req.body.lastname,
-    email: req.body.email,
-    hutkCode: req.cookies.hubspotutk
-  }); 
+
 });
+
+
 
 
 app.listen(process.env.PORT || 3000, () => console.log(`listening on port ${PORT}`));
