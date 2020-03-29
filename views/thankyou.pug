@@ -14,18 +14,49 @@ html(lang='en')
     link(rel='stylesheet', href='/stylesheets/styles.css')
   
   body
+    nav(class='navbar navbar-expand-lg navbar-dark mask rgba-black-strong')
+      a(class="navbar-brand" href="/") Spartan Mule
+      button(class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-555" aria-controls="navbarSupportedContent-555" aria-expanded="false" aria-label="Toggle navigation")
+        span(class="navbar-toggler-icon")
+      div(class="collapse navbar-collapse")
+        ul(class="navbar-nav mr-auto")
+          li(class="nav-item")
+            a(class="nav-link" href="/") Home
+              span(class="sr-only") (current)
+          li(class="nav-item")
+            a(class="nav-link" href="/") My Trips
+          li(class="nav-item")
+            a(class="nav-link" href="/") About Us
+          li(class="nav-item")
+            a(class="nav-link" href="/") Contact Us
+        ul(class="navbar-nav ml-auto nav-flex-icons")
+          li(class="nav-item dropdown")
+            a(class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false")
+              i(class="fas fa-user")
+
+    
     main
-      div(class='text-center mask rgba-black-strong')
-        img(src='/images/mule_cartoon.png' class='main-logo')
       div(class='mask rgba-black-strong')
         div(class='container-fluid pt-5 d-flex justify-content-center h-100')
           div(class='row d-flex justify-content-center text-center')
             div(class='col-md-10 justify-content-center white-text')
               h1(class='font-weight-bold mb-2') Thank you, #{firstname}!
               h4(class='pt-2') The guide has been sent to your email at #{email}.
-              p(class='pt-2') We look forward to hearing about your next adventure!
-              button(class='btn btn-danger') Take me home
+              h5(class='pt-4') We look forward to hearing about your next adventure!
+              hr
+              h3 Follow us to stay updated on the best travel hacks!
+              div
+                a(class="btn-floating btn-lg btn-fb" type="button" role="button")
+                  i(class="fab fa-facebook-f")
+                a(class="btn-floating btn-lg btn-tw" type="button" role="button")
+                  i(class="fab fa-twitter")
+                a(class="btn-floating btn-lg btn-ins" type="button" role="button")
+                  i(class="fab fa-instagram")
+                
+
 
     footer(class='page-footer font-small btn-danger text-white')
       div(class='text-center py-3') 2020 Copyright: SpartanMule
     script(type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/7388454.js")
+
+

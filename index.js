@@ -20,6 +20,10 @@ app.get('/', (req, res) => {
   res.render('landing');
 });
 
+app.get('/thankyou', (req, res) => {
+  res.render('thankyou');
+})
+
 app.post('/', (req, res) => {
 
   // Create the new request 

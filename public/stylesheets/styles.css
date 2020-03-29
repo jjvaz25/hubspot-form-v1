@@ -6,13 +6,11 @@ body {
     font-family: Roboto, sans-serif;
 }
 
-
 .main-logo {
   height: 100px
 }
 
 main {
-  /* background: url("/images/aerial_beach.jpg")no-repeat center center fixed; */
   background: url("/images/aerial_beach2.png")no-repeat center center fixed;
   background-size: cover;
 }
@@ -40,6 +38,7 @@ main {
   margin-right: -45px
 }
 
+/* TABLETS */
 @media only screen and (max-width: 650px) {
   
   .h1-mobile {
@@ -55,6 +54,7 @@ main {
   }
 }
 
+/* MOBILE */
 @media only screen and (max-width: 500px) {
   
   .h1-mobile {
