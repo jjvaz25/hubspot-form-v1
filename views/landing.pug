@@ -4,20 +4,62 @@ html(lang='en')
     title= 'Landing page'
     meta(charset='utf-8')
     meta(name='viewport', content='width=device-width, initial-scale=1')
+
+    link(rel='stylesheet', href='/stylesheets/reset.css')
+
+    //- MDN BOOTSTRAP
+    link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css")
+    link(rel="stylesheet" href="css/bootstrap.min.css")
+    link(rel="stylesheet" href="css/mdb.min.css")
+
+    //- CUSTOM FONT
+    link(rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap")
+    link(rel='stylesheet', href='/stylesheets/styles.css')
+  
   body
-    p landing page
-    p fill out below
-    form(action="" method="POST")
-      label(for="firstname") first name
-      input(type="text" name="firstname")
-      label(for="lastname") last name
-      input(type="text" name="lastname")
-      label(for="email") email
-      input(type="email" name="email")
-      input(type="submit" value="submit")
+    main
+      div(class='text-center mask rgba-black-strong')
+        img(src='/images/mule_cartoon.png' class='main-logo')
+      div(class='mask rgba-black-strong') 
+        div(class='container-fluid d-flex align-items-center justify-content-center h-100')
+          div(class='row d-flex justify-content-center text-center')
+            div(class='col-md-10')
+              h1(class='display-4 font-weight-bold white-text pt-5 mb-2') Make money while you travel
+              hr(class='hr-light')
+              h2(class='white-text my-4') Learn how 10 Spartan Mule users turned the world into their office space
+              
+            form(class='text-center p-2' action="" method="POST")
+              div(class='form-row mb-3')
+                div(class='col')
+                  //- label(for="firstname") first name
+                  input(class='form-control' type="text" name="firstname" placeholder='First name')
+                div(class='col')
+                  //- label(for="lastname") last name
+                  input(class='form-control' type="text" name="lastname" placeholder='Last name')
+                //- label(for="email") email
+              input(class='form-control mb-3' type="email" name="email" placeholder='Email address')
+              input(class='btn btn-info my-4 btn-block' type="submit" value="Start your next adventure")
+
+    section(class='mt-5')
+      div(class='container')
+        div(class='text-center')
+          h2(class='mb-5 font-weight-bold') Guide highlights
+          div(class='row')
+            div(class='col-md-4 mb-5')
+              i(class='fa fa-camera-retro fa-4x orange-text')
+              h4(class='my-4 font-weight-bold') Experience
+              p(class='grey-text') Get paid to do your favorite hobbies
+          
+            div(class='col-md-4 mb-5')
+              i(class='fa fa-check-circle fa-4x orange-text')
+              h4(class='my-4 font-weight-bold') Routine
+              p(class='grey-text') Getting in the zone while on the road
+
+            div(class='col-md-4 mb-5')
+              i(class='fa fa-wifi fa-4x orange-text')
+              h4(class='my-4 font-weight-bold') Connectivity
+              p(class='grey-text') Finding great connections without stress
+
+    footer(class='page-footer font-small btn-info text-white')
+      div(class='text-center py-3') 2020 Copyright: SpartanMule
     script(type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/7388454.js")
-
-
-<!-- Start of HubSpot Embed Code -->
-//- <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/7388454.js"></script>
-<!-- End of HubSpot Embed Code -->

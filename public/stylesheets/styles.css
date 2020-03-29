@@ -1,0 +1,18 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+    font-family: Roboto;
+}
+
+
+.main-logo {
+  height: 100px
+}
+
+main {
+  background: url("/images/aerial_beach.jpg")no-repeat center center fixed;
+  background-size: cover;
+
+}

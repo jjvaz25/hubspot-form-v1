@@ -15,12 +15,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
+app.use(express.static('public'));
 
 app.get('/', (req, res) => {
   res.render('landing');
 });
 
-const formv3 = (email, firstname, lastname, cookie) => {
+const formv3 = (email, firstname, lastname) => {
   // Create the new request 
   var xhr = new XMLHttpRequest();
   var url = 'https://api.hsforms.com/submissions/v3/integration/submit/7388454/6153d0b7-b2fa-4297-86fa-8aab202b232f'
@@ -41,11 +42,11 @@ const formv3 = (email, firstname, lastname, cookie) => {
         "value": lastname
       }
     ],
-    "context": {
-      "hutk": cookie, // include this parameter and set it to the hubspotutk cookie value to enable cookie tracking on your submission
-      "pageUri": "spartan-mule-landing.herokuapp.com/",
-      "pageName": "Spartan Mule Landing Page"
-    },
+    // "context": {
+    //   "hutk": cookie, // include this parameter and set it to the hubspotutk cookie value to enable cookie tracking on your submission
+    //   "pageUri": "spartan-mule-landing.herokuapp.com/",
+    //   "pageName": "Spartan Mule Landing Page"
+    // },
     "legalConsentOptions":{ // Include this object when GDPR options are enabled
       "consent":{
         "consentToProcess":true,
@@ -87,12 +88,12 @@ const formv3 = (email, firstname, lastname, cookie) => {
 }
 
 app.post('/', (req, res) => {
-  formv3(req.body.email, req.body.firstname, req.body.lastname, req.cookies.hubspotutk);
+  formv3(req.body.email, req.body.firstname, req.body.lastname);
   res.render('thankyou', {
     firstname: req.body.firstname,
     lastname: req.body.lastname,
     email: req.body.email,
-    cookieID: req.cookies.hubspotutk
+    // cookieID: req.cookies.hubspotutk
   }); 
 });
 

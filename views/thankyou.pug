@@ -1,11 +1,28 @@
 html(lang='en')
   head
-    title= 'Landing page'
+    title= 'Thank you!'
     meta(charset='utf-8')
     meta(name='viewport', content='width=device-width, initial-scale=1')
+    
+    link(rel='stylesheet', href='/stylesheets/reset.css')
+    //- MDN BOOTSTRAP
+    link(rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css")
+    link(rel="stylesheet" href="css/bootstrap.min.css")
+    link(rel="stylesheet" href="css/mdb.min.css")
+    //- CUSTOM FONT
+    link(rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap")
+    link(rel='stylesheet', href='/stylesheets/styles.css')
+  
   body
-    h1 Thank you for submitting the form!
-    h1=firstname
-    h1=lastname
-    h1=email
-    h4=cookieID
+    main
+      div(class='text-center mask rgba-black-strong')
+        img(src='/images/mule_cartoon.png' class='main-logo')
+      div(class='mask rgba-black-strong')
+        div(class='container-fluid pt-5 d-flex justify-content-center h-100')
+          div(class='row d-flex justify-content-center text-center')
+            div(class='col-md-10 justify-content-center white-text')
+              h1(class='font-weight-bold mb-2') Thank you, #{firstname}!
+              h4(class='pt-2') The guide has been sent yo your email at #{email}.
+              p(class='pt-2') We look forward to hearing about your next adventure!
+              p=lastname
+              p=cookieID
