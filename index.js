@@ -24,8 +24,7 @@ app.get('/', (req, res) => {
 const formv3 = (email, firstname, lastname, hutk) => {
   // Create the new request 
   var xhr = new XMLHttpRequest();
-  // var url = 'https://api.hsforms.com/submissions/v3/integration/submit/7388454/6153d0b7-b2fa-4297-86fa-8aab202b232f'
-  var url = 'https://api.hsforms.com/submissions/v3/integration/submit/c45f8fcc-4bf7-4e98-9aeb-283c978e6d0c'
+  var url = 'https://api.hsforms.com/submissions/v3/integration/submit/7388454/6153d0b7-b2fa-4297-86fa-8aab202b232f'
   
   // Request JSON:
   var data = {
