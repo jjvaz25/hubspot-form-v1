@@ -1,5 +1,4 @@
 const express = require('express');
-const axios = require('axios');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;

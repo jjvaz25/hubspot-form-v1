@@ -14,5 +14,57 @@ body {
 main {
   background: url("/images/aerial_beach.jpg")no-repeat center center fixed;
   background-size: cover;
+}
 
+.logo-container {
+  display: inline-block;
+}
+
+.logo-text-top {
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  color: white;
+  font-size: 25px;
+}
+
+.logo-text-bottom {
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  color: white;
+  font-size: 25px;
+}
+
+.logo-bottom-words {
+  margin-top: -15px;
+  margin-right: -45px
+}
+
+@media only screen and (max-width: 650px) {
+  
+  .h1-mobile {
+    font-size: 48px;
+  }
+
+  .h2-mobile {
+    font-size: 24px;
+  }
+
+  .h4-mobile {
+    font-size: 20px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  
+  .h1-mobile {
+    font-size: 40px;
+  }
+
+  .h2-mobile {
+    font-size: 20px;
+  }
+
+  .h4-mobile {
+    font-size: 16px;
+  }
 }
