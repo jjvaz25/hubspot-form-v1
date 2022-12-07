@@ -22,9 +22,9 @@
   },
   "homepage": "https://github.com/jjvaz25/hubspot-form-v1#readme",
   "dependencies": {
-    "body-parser": "^1.19.0",
+    "body-parser": "^1.20.1",
     "cookie-parser": "^1.4.5",
-    "express": "^4.17.1",
+    "express": "^4.18.2",
     "pug": "^2.0.4",
     "xmlhttprequest": "^1.8.0"
   },
